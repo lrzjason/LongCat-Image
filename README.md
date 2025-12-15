@@ -6,7 +6,7 @@
 <hr>
 
 <div align="center" style="line-height: 1;">
-    <a href='https://github.com/meituan-longcat/LongCat-Image/blob/main/assets/LongCat_Image_Technical_Report.pdf'><img src='https://img.shields.io/badge/Technical Report-PDF-red'></a>
+    <a href='https://arxiv.org/pdf/2512.07584'><img src='https://img.shields.io/badge/Technical Report-PDF-red'></a>
     <a href='https://longcat.ai/'><img src="https://img.shields.io/badge/🤖%20Demo-LongCat--Image-ADFF2F?color=29E154&logoColor=white"></a>
     <a href='https://github.com/meituan-longcat/LongCat-Image'><img src='https://img.shields.io/badge/GitHub-Code-black'></a>
     <a href='https://github.com/meituan-longcat/LongCat-Flash-Chat/blob/main/figures/wechat_official_accounts.png'><img src='https://img.shields.io/badge/WeChat-LongCat-brightgreen?logo=wechat&logoColor=white'></a>
@@ -134,11 +134,11 @@ huggingface-cli download meituan-longcat/LongCat-Image-Edit --local-dir ./weight
 > Leveraging a stronger LLM for prompt refinement can further enhance image generation quality. Please refer to [inference_t2i.py](https://github.com/meituan-longcat/LongCat-Image/blob/main/scripts/inference_t2i.py#L28) for detailed usage instructions.
 
 > [!CAUTION]
-> **Special Handling for Text Rendering**
+> **📝 Special Handling for Text Rendering**
 >
-> For both Text-to-Image and Image Editing tasks involving text generation, **you must enclose the target text within quotes (`""`)**.
+> For both Text-to-Image and Image Editing tasks involving text generation, **you must enclose the target text within single or double quotation marks** (both English '...' / "..." and Chinese ‘...’ / “...” styles are supported).
 >
-> **Reason:** The tokenizer applies **character-level encoding** specifically to content found inside quotes. Failure to use explicit quotation marks will result in a significant degradation of text rendering quality.
+> **Reasoning:** The model utilizes a specialized **character-level encoding** strategy specifically for quoted content. Failure to use explicit quotation marks prevents this mechanism from triggering, which will severely compromise the text rendering capability.
 
 ```python
 import torch
@@ -362,7 +362,7 @@ The quantitative evaluation results on public benchmarks demonstrate LongCat-Ima
 
 ## Training Pipeline
 
-We provide training code that enables advanced development of our LongCat‑Image‑Dev model, including SFT, LoRA, DPO, and Edit training.
+We provide training code that enables advanced development of our LongCat‑Image‑Dev and model, including SFT, LoRA, DPO, and Image Editing training.
 
 See [TRAINING.md](./train_examples/README.md) for detailed instructions.
 
@@ -373,6 +373,8 @@ Community works are welcome! Please PR or inform us in Issue to add your work.
 - [LoRA Adapters] Fine-tuned models for specific styles and domains
 - [ComfyUI Integration] Native support for ComfyUI workflow
 - [Diffusers Pipeline] HuggingFace Diffusers integration
+- [ComfyUI Longcat Image](https://github.com/sooxt98/comfyui_longcat_image) - Custom node extension for ComfyUI workflow.
+
 
 ## License Agreement
 
@@ -393,11 +395,11 @@ Nothing in this Model Card should be interpreted as altering or restricting the 
 We kindly encourage citation of our work if you find it useful.
 
 ```bibtex
-@misc{LongCat-Image,
-    author={Meituan LongCat Team},
-    title={LongCat-Image Technical Report},
-    year={2025},
-    howpublished={\url{https://github.com/meituan-longcat/LongCat-Image}},
+@article{LongCat-Image,
+      title={LongCat-Image Technical Report},
+      author={Meituan LongCat Team and  Hanghang Ma and Haoxian Tan and Jiale Huang and Junqiang Wu and Jun-Yan He and Lishuai Gao and Songlin Xiao and Xiaoming Wei and Xiaoqi Ma and Xunliang Cai and Yayong Guan and Jie Hu},
+	    journal={arXiv preprint arXiv:2512.07584},
+      year={2025}
 }
 ```
 
